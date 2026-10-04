@@ -1,7 +1,7 @@
 "use strict";
 /*
  * Laboration 5 - Studentkortsgenerator
- * Namn: DITT NAMN
+ * Namn: Mattias Åfeldt
  */
 
 // Hämta element från DOM
@@ -34,10 +34,21 @@ let history = [];
  */
 function validateForm() {
     // Kontrollera formulärets obligatoriska fält
+    errors = [];
+    if (fullnameInput.value.trim() === "") {
+        errors.push("Fyll i ditt namn.");
+    }
+    if (emailInput.value.trim() === "") {
+        errors.push("Fyll i din e-postadress.");
+    }
+    if (phoneInput.value.trim() === "") {
+        errors.push("Fyll i ditt telefonnummer.");
+    }
 
     // Visa eventuella felmeddelanden
-
+    displayErrors();
     // Returnera resultatet (true eller false) av valideringen
+    return errors.length === 0;
 }
 
 
