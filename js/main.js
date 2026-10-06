@@ -93,10 +93,10 @@ function createStudentCard() {
         phone: phone,
         font: font
     };
-    history.push(studentCard);
 
     // Spara och uppdatera historiken
     history.push(studentCard);
+    saveHistory();
     renderHistory();
 }
 
@@ -106,6 +106,7 @@ function createStudentCard() {
  */
 function saveHistory() {
     // Spara history i localStorage
+    localStorage.setItem("studentHistory", JSON.stringify(history));
 }
 
 
@@ -114,8 +115,13 @@ function saveHistory() {
  */
 function loadHistory() {
     // Hämta eventuell sparad historik
+    let saveHistory = localStorage.getItem("studentHistory");
 
     // Uppdatera history
+    if (saveHistory) {
+        history = JSON.parse(saveHistory);
+    }
+    renderHistory();
 }
 
 
@@ -187,3 +193,4 @@ form.addEventListener("submit", function (event) {
 
 // När sidan laddas:
 // - läs in och visa eventuell tidigare historik
+loadHistory();
