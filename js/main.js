@@ -146,7 +146,7 @@ function renderHistory() {
         cardDiv.appendChild(nameP);
         cardDiv.appendChild(emailP);
         cardDiv.appendChild(phoneP);
-        historySection.appendChild(cardDiv);
+        historySection.prepend(cardDiv);
     });
 }
 
